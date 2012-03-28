@@ -12,13 +12,13 @@ from application import views
 ## URL dispatch rules
 app.add_url_rule('/', 'index', view_func=views.index)
 
-# Handle 404 errorse2
+# Handle 404 error
 @app.errorhandler(404)
 def page_not_found(e):
-	return render_template('404.html'), 404
+	return "Page Not Found"
 
 # Handle 500 errors
 @app.errorhandler(500)
 def server_error(e):
-	return render_template('500.html'), 500
+	return "Internal Server Error"
 
