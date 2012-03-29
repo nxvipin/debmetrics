@@ -5,12 +5,12 @@ URL route handlers
 
 """
 
-
-from google.appengine.api import users
-from google.appengine.runtime.apiproxy_errors import CapabilityDisabledError
-from flask import render_template, flash, url_for, redirect
+from flask import render_template, flash, url_for, redirect, json
+from flask import jsonify
 
 
 def index():
-    return "Test Flask App"
+	return "Test Flask App"
 
+def teamMetrics(team, metric):
+	return "<img src=http://blends.debian.net/liststats/"+metric+"_"+team+".png>"
