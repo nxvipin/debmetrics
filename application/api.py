@@ -28,5 +28,5 @@ def teamMetrics(api_version, team, metric):
 	Given a team and a particular metric, the available data is returned in JSON format.
 	"""
 	r = models.extractMetrics(team,metric)
-	return simplejson.dumps([r,r])
+	return simplejson.dumps([r])
 
