@@ -18,3 +18,13 @@ parser = function(data){
 		});
 	});return result;
 }
+plotdata = function(div,result){
+					var ticks = result.label;
+					$.jqplot(div, result.data, {
+						seriesDefaults:{ rendererOptions: {fillToZero: true} },
+						series:result.legend,
+						legend: { show: true, placement: 'insideGrid', location : 'nw', noColumns:2},
+						highlighter:{show:true,sizeAdjust:7.5},
+						axes: {	xaxis: { renderer: $.jqplot.CategoryAxisRenderer,ticks: ticks}, yaxis: { pad: 1.0, tickOptions: {formatString: '%d'}}}
+						});
+				}
