@@ -9,18 +9,21 @@ from application import app
 import views
 import api
 
-
-## URL dispatch rules
+## Views 
 app.add_url_rule('/', 'index', view_func=views.index)
+app.add_url_rule('/<team>/<metric>/', view_func=views.teamMetricsStaticImage)
+app.add_url_rule('/dynamic/<team>/<metric>/', view_func=views.teamMetricsDynamicImage)
+
+## API 
 app.add_url_rule('/api/v<api_version>/<team>/', view_func=api.team)
 app.add_url_rule('/api/v<api_version>/<team>/<metric>/', view_func=api.teamMetrics)
 
-# Handle 404 error
+## Handle 404 error
 @app.errorhandler(404)
 def page_not_found(e):
 	return "Page Not Found"
 
-# Handle 500 errors
+## Handle 500 errors
 @app.errorhandler(500)
 def server_error(e):
 	return "Internal Server Error"
