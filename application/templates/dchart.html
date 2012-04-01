@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="{{url_for('static',filename='css/jquery.jqplot.min.css')}}" type="text/css"/>
+		
+		
+	</head>
+	<body>
+		<h4>Team : {{data.team}} <br /> Metric : {{data.metric}}</h4>
+		<div id="progress">
+			<img src="{{url_for('static',filename='images/spinner.gif')}}">
+		</div>
+		<div id="chartdiv" style="height:400px;width:700px; "></div>
+		<script src="{{url_for('static',filename='js/jquery-1.7.2.min.js')}}" type="text/javascript"></script>
+		<script src="{{url_for('static',filename='js/jquery.jqplot.min.js')}}"></script>
+		<script src="{{url_for('static',filename='js/jqplot.highlighter.js')}}"></script>
+		<script src="{{url_for('static',filename='js/parse.js')}}"></script>
+		<script src="{{url_for('static',filename='js/jqplot.categoryAxisRenderer.js')}}"></script>
+		<script>
+			$(document).ready(function(){
+				console.log("Ready");
+				$.getJSON("/api/v1/{{data.team}}/{{data.metric}}/",
+					function(data){
+						$("#progress").hide();
+						plotdata("chartdiv",parser(data));
+					});
+			});
+		</script>
+	</body>
+</html>
