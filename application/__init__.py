@@ -8,6 +8,6 @@ from flaskext.gae_mini_profiler import GAEMiniProfiler
 
 app = Flask('application')
 app.config.from_object('application.settings')
-GAEMiniProfiler(app)
+#GAEMiniProfiler(app)
 
 import urls
