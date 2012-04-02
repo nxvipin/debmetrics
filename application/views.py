@@ -10,7 +10,7 @@ from flask import render_template
 
 
 def index():
-	return "Test Flask App"
+	return render_template('index.html')
 
 def teamMetricsStaticImage(team, metric):
 	d=dict();
