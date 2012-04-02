@@ -15,21 +15,19 @@ def extractMetrics(team, metric):
 	ll = len(lines)
 	names = lines[0].split('\t')
 	results = list()
-	for i in range (1,ll):
-		data =  lines[i].split('\t')
-		year = data[0]
-		results.append(dict());
-		results[len(results)-1]["year"]=year;
-		results[len(results)-1]["userdata"]=list();
+	for i in range(1,ll):
+		data = lines[i].split('\t')
+		ld = len(data)
 		
-		lw = len(data)
-		yeardata=dict()
-		for j in range(1,lw):
-			results[len(results)-1]["userdata"].append(dict())
-			results[len(results)-1]["userdata"][len(results[len(results)-1]["userdata"])-1]["user"]=names[j]
-			results[len(results)-1]["userdata"][len(results[len(results)-1]["userdata"])-1]["data"]=data[j]
+		for j in range (1,ld):
+			if(i==1):
+				results.append(dict())
+				results[j-1]["user"]=names[j].strip();
+				results[j-1]["userdata"]=list()
+			results[j-1]["userdata"].append(dict())
+			results[j-1]["userdata"][i-1]["year"]=data[0].strip()
+			results[j-1]["userdata"][i-1]["data"]=data[j].strip()
 	metricresult = dict()
 	metricresult["metric"]=metric
 	metricresult["data"]=results;
 	return metricresult
-
