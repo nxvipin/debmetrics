@@ -6,13 +6,13 @@ parser = function(data){
 		result.data = Array();
 		result.legend = Array();
 		metric.data.forEach(function(metricdata){
-			result.label.push(metricdata.year);
+			result.legend.push({"label":metricdata.user});
 			result.data.push(Array());
 			metricdata.userdata.forEach(function(user){
 				result.data[result.data.length-1].push(parseInt(user.data));
 				console.log(user.data);
 				if(metric.data.indexOf(metricdata)==1){
-					result.legend.push({"label":user.user});
+					result.label.push(user.year);
 				}
 			});
 		});
